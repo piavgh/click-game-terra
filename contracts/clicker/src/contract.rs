@@ -28,7 +28,7 @@ pub fn instantiate(
     // We're storing stuff in a variable called "state" of type "State"
     let state = State {
         length: msg.length,
-        name: msg.name,
+        name: msg.name.clone(),
         owner: info.sender.clone(),
         scores: vec![],
     };
@@ -43,6 +43,7 @@ pub fn instantiate(
         .add_attribute("method", "instantiate")
         .add_attribute("owner", info.sender)
         .add_attribute("length", msg.length.to_string())
+        .add_attribute("name", msg.name)
         .add_attribute("scores", "".to_string()))
 }
 
